@@ -17,12 +17,16 @@ namespace rollaDice
             InitializeComponent();
         }
 
+        public Random randomMain = new Random();
+
         private void button1_Click(object sender, EventArgs e)
         {
             Random random = new Random();
             int roll = random.Next(1, 7);
             this.label1.Text = roll.ToString();
         }
+       
+
         public void roll2dices()
         {
             Random random1 = new Random();
@@ -73,6 +77,31 @@ namespace rollaDice
         private void button3_Click(object sender, EventArgs e)
         {
             roll6dices();
+        }
+
+
+
+        public int rndDieces()
+        {
+            
+            int roll = randomMain.Next(1, 49);
+            return roll;
+        }
+
+        //you can modified and check in a list if values are unique or not
+        public void runNTimes(int n, ref Label l)
+        {
+            l.Text = " ";
+            for (int i = 0; i < n; i++)
+            {
+                l.Text += i.ToString() + " : ";
+                l.Text += rndDieces().ToString();
+                l.Text += " \r\t ";
+            }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            runNTimes(49,  ref this.label4);
         }
     }
 }
